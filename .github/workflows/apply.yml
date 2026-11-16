@@ -1,0 +1,33 @@
+name: apply
+
+on:
+  push:
+    branches: [main]
+    paths: ["terraform/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apply-production
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    # The human approval gate: in Settings > Environments > production,
+    # add yourself under "Required reviewers". The job waits until someone approves.
+    environment: production
+    defaults:
+      run:
+        working-directory: terraform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Init
+        run: terraform init -input=false
+      - name: Plan again on main
+        run: terraform plan -input=false -out=tfplan
+      - name: Apply the reviewed plan
+        run: terraform apply -input=false tfplan

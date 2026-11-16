@@ -1,0 +1,4 @@
+{"resource_changes":[
+ {"address":"random_id.deployment","type":"random_id","change":{"actions":["create"]}},
+ {"address":"local_file.service_config","type":"local_file","change":{"actions":["create"]}}
+]}

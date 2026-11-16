@@ -1,0 +1,5 @@
+{"resource_changes":[
+ {"address":"aws_iam_role_policy.ci","type":"aws_iam_role_policy","change":{"actions":["update"]}},
+ {"address":"aws_db_instance.orders","type":"aws_db_instance","change":{"actions":["delete","create"]}},
+ {"address":"local_file.service_config","type":"local_file","change":{"actions":["no-op"]}}
+]}

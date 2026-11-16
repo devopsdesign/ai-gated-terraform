@@ -1,0 +1,9 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
+plan.json
+review.md
+terraform/out/
+__pycache__/
+.pytest_cache/
